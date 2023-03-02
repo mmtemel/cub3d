@@ -36,7 +36,7 @@ void my_mlx_pixel_put(t_cub3d *img, int x, int y, int color)
 {
     int (i) = 0;
     int (j) = 0;
-
+	mlx_clear_window(img->mlx, img->mlx_win);
     while (i < img->pixel)
     {
         j = 0;
@@ -49,7 +49,7 @@ void my_mlx_pixel_put(t_cub3d *img, int x, int y, int color)
     }
 }
 
-void my_mlx_pixel_put2(t_cub3d *img, int x, int y, int color)
+void my_mlx_pixel_put2(t_cub3d *img, double x, double y, int color)
 {
     int (i) = 0;
     int (j) = 0;
@@ -64,19 +64,33 @@ void my_mlx_pixel_put2(t_cub3d *img, int x, int y, int color)
         }
         i++;
     }
-    j = 0;
-    while (j < img->pixel)
-    {
-        mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel), (y * img->pixel) + j, 0x000000);
-        j++;
-    }
-    i = 0;
-    while (i < img->pixel)
-    {
-        mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel) + i, (y * img->pixel), 0x000000);
-        i++;
-    }
+    //mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel), (y * img->pixel), color);
+    // mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel) + 1, (y * img->pixel), color);
+    // mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel) - 1, (y * img->pixel), color);
+    // mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel), (y * img->pixel) + 1, color);
+    // mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel), (y * img->pixel) - 1, color);
 }
+
+// void my_mlx_pixel_put3(t_cub3d *img, int x, int y, int color, char *str)
+// {
+//     int (i) = 0;
+//     int (j) = 0;
+//     double speed = img->speed_pixel / img->pixel; // 10 / 16
+    
+//     if (ft_strncmp(str, "-x", 2) == 0)
+//     {
+//         while (i < img->pixel)
+//         {
+//             j = 0;
+//             while (j < img->pixel)
+//             {
+//                 mlx_pixel_put(img->mlx, img->mlx_win, (x * img->pixel) + j, (y * img->pixel) + i, color);
+//                 j++;
+//             }
+//             i++;
+//         }   
+//     }
+// }
 
 void putimage(t_cub3d *cub3dptr)
 {
@@ -92,15 +106,10 @@ void putimage(t_cub3d *cub3dptr)
             if (cub3dptr->map[y][x] == '1')
                 my_mlx_pixel_put(cub3dptr, x, y, CYAN);
             else if (cub3dptr->map[y][x] == '0')
-                my_mlx_pixel_put2(cub3dptr, x,y, WHITE);
-            else if (cub3dptr->map[y][x] == 'N' || cub3dptr->map[y][x] == 'S' || cub3dptr->map[y][x] == 'E'
-                || cub3dptr->map[y][x] == 'W')
-                {
-                    my_mlx_pixel_put(cub3dptr, x, y, WHITE);
-                    my_mlx_pixel_put(cub3dptr, x, y, RED);
-                }
+                my_mlx_pixel_put(cub3dptr, x,y, WHITE);
             x++;
         }
         y++;
     }
+    my_mlx_pixel_put2(cub3dptr, cub3dptr->p_x, cub3dptr->p_y, RED);
 }

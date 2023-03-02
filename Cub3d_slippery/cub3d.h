@@ -17,6 +17,15 @@
 #define W 13
 #define ESC 53
 
+#define WINDOW_X 500
+#define WINDOW_Y 500
+
+#define SQR_X 50
+#define SQR_Y 50
+#define SQR_LENGTH 45
+
+#define PLAYER 20
+
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define WHITE 0x00FFFFFF
@@ -67,8 +76,11 @@ typedef struct cub3d
     int w_timer;
     int x_kord;
     int y_kord;
+    double p_x;
+    double p_y;
     int speed_pixel;
     int pixel;
+    double speed;
 } t_cub3d;
 
 int pushbutton(int keycode, t_cub3d *ptr);
@@ -92,7 +104,7 @@ void ismaptrue(char *words, t_cub3d *img);
 void double_free_split(char **split1, char **split2);
 void realmapcheck(int i, t_cub3d *img);
 void my_mlx_pixel_put(t_cub3d *img, int x, int y, int color);
-void my_mlx_pixel_put2(t_cub3d *img, int x, int y, int color);
+void my_mlx_pixel_put2(t_cub3d *img, double x, double y, int color);
 void player(t_cub3d *cub3dptr);
 void turnleft(t_cub3d *cub3d);
 void turnup(t_cub3d *cub3d);
