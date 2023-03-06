@@ -36,8 +36,6 @@ void my_mlx_pixel_put(t_cub3d *img, int x, int y, int color)
 {
     int (i) = 0;
     int (j) = 0;
-	//printf("y:%d, x:%d\n", y, x);
-	//printf("calc:%d\n", (img->pixel * y + i) * img->max_map_width * img->pixel + (img->pixel * x) + j);
 	while (i < img->pixel)
 	{
 		j = 0;
@@ -66,21 +64,18 @@ void    my_mlx_pixe_put_angle(t_cub3d *img)
 {
     int i = 0;
     int j = 0;
-    int def = -30;
 
-    while (++def < 30)
-    {
-        while (i < img->pixel)
+    while (i < img->pixel * 5)
+	{
+		j = 0;
+		while (j < img->pixel * 5)
 		{
-			j = 0;
-			while (j < img->pixel)
-			{
-				mlx_pixel_put(img->mlx, img->mlx_win, (img->p_x * img->pixel) + (img->angle_x * j), (img->p_y * img->pixel) - (img->angle_y * i), 0x00000000);
-				j++;
-			}
-			i++;
+            if (i == j)
+		        mlx_pixel_put(img->mlx, img->mlx_win, (img->p_x * img->pixel) + (img->angle_x * j), (img->p_y * img->pixel) - (img->angle_y * i), 0);
+			j++;
 		}
-    }
+		i++;
+	}
 }
 
 void putpixel(t_cub3d *cub3dptr)
@@ -106,12 +101,12 @@ void putpixel(t_cub3d *cub3dptr)
 
 int putimage(t_cub3d *img)
 {
+    //drawRays3D(img);
     keycheckforloop(img);
 	mlx_clear_window(img->mlx, img->mlx_win);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
     my_mlx_pixe_put_angle(img);
 	my_mlx_pixel_put2(img);
-
 
     //--->for log file.
     // int fd;

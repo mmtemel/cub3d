@@ -27,15 +27,6 @@
 # define MAGENTA 0x00FF00FF
 # define CYAN 0x8000FFFF
 
-typedef struct s_player
-{
-    float x;
-    float y;
-    float dx;
-    float dy;
-    float angle;
-}       t_player;
-
 typedef struct s_bool
 {
     bool w_check;
@@ -50,7 +41,6 @@ typedef struct cub3d
 {
     void *mlx;
     void *mlx_win;
-    t_player *player;
     t_check *check;
     char **map;
     char **map_input;
@@ -129,5 +119,8 @@ void    convertangle(char c, t_cub3d *img);
 void    my_mlx_pixe_put_angle(t_cub3d *img);
 void angleright(t_cub3d *img);
 void angleleft(t_cub3d *img);
+void dda(t_cub3d *img, float x1, float y1, float x2, float y2);
+double distance(double ax, double ay, double bx, double by);
+void drawRays3D(t_cub3d *img);
 
 #endif
