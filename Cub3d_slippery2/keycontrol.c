@@ -13,13 +13,13 @@ int pushbutton(int keycode, t_cub3d *ptr)
 void keycheckforloop(t_cub3d *img)
 {
     if (img->check->w_check == true)
-        turnup(img);
+		turnup(img);
  	if (img->check->a_check == true)
-        turnleft(img);
+		turnleft(img);
     if (img->check->s_check == true)
-        turndown(img);
+    	turndown(img);
     if (img->check->d_check == true)
-        turnright(img);
+		turnright(img);
 	if (img->check->l_check == true)
 		angleleft(img);
 	if (img->check->r_check == true)

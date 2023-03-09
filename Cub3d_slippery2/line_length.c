@@ -71,8 +71,8 @@ void    my_mlx_pixe_put_angle(t_cub3d *img)
 		while (j < img->pixel * 5)
 		{
             if (i == j)
-		        mlx_pixel_put(img->mlx, img->mlx_win, (img->p_x * img->pixel) + (img->angle_x * j), (img->p_y * img->pixel) - (img->angle_y * i), 0);
-			j++;
+                mlx_pixel_put(img->mlx, img->mlx_win, (img->p_x * img->pixel) + (img->angle_x * j), (img->p_y * img->pixel) - (img->angle_y * i), 0);
+            j++;
 		}
 		i++;
 	}
