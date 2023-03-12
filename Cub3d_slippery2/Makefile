@@ -10,23 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-OS = $(shell uname)
-ifeq ($(OS), Darwin)
-MINILIBX = minilibx
-CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -L ./$(MINILIBX)
-else
-MINILIBX = mlx
-CFLAGS	:= -Wall -Werror -Wextra -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -L ./$(MINILIBX)
-endif
 NAME = Cub3d
 SRC = $(wildcard *.c) $(wildcard get_next_line/*.c) libft/libft.a
 CC = gcc
-#CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -L ./minilibx
+CFLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -L ./minilibx
 OBJ = $(SRC: .c = .o)
 
 $(NAME): $(OBJ)
 	@cd libft && make && cd ..
-	@cd $(MINILIBX) && make && cd ..
+	@cd minilibx && make && cd ..
 	$(CC) $(SRC) $(CFLAGS) -o Cub3d
 	@echo "\033[1;92mCOMPILING SUCCESSFUL\033[0m"
 
@@ -42,7 +34,7 @@ fclean:
 
 re:
 	@cd libft && make re && cd ..
-	@cd $(MINILIBX) && make re && cd ..
+	@cd minilibx && make re && cd ..
 	@echo "\033[1;92mREMAKE\033[0m"
 	@make fclean
 	@make
