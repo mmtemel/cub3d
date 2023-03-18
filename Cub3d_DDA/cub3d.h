@@ -25,7 +25,7 @@
 #define ESC 53
 #define L 123 //75
 #define R 124 //77
-
+# define BLUE 0x000000FF
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define WHITE 0x00FFFFFF
@@ -51,8 +51,14 @@ typedef struct cub3d
     t_check *check;
     char **map;
     char **map_input;
-    int *addr;
-    void *img;
+	int *addr_map;
+	void *img_map;
+	int *addr_player;
+	void *img_player;
+	int *addr_ray;
+	void *img_ray;
+	int *addr_game;
+	void *img_game;
     void *wall;
     void *floor;
     int line_length;
@@ -73,6 +79,8 @@ typedef struct cub3d
 	char *ea_path; //will be freed to here
 	int f_color[3];
 	int c_color[3];
+    int f_final;
+    int c_final;
     int n_timer;
     int s_timer;
     int e_timer;
@@ -128,7 +136,8 @@ void angleleft(t_cub3d *img);
 double distance(double ax, double ay, double bx, double by);
 void dda(t_cub3d *img, double x1, double y1, double x2, double y2);
 void    my_mlx_pixe_put_angle(t_cub3d *img);
-void draw3DWalls(t_cub3d *img, int i, int j, double distance_to_wall);
-void my_mlx3_pixel_put_image(t_cub3d *img, int x, int y, int color);
+void pixel_to_player_image_address(t_cub3d *img, int x, int y, int color);
+void pixel_to_ray_image_address(t_cub3d *img, int x, int y, int color);
+void put_game_to_window(t_cub3d *img);
 
 #endif
