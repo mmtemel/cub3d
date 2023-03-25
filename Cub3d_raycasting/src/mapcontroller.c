@@ -58,9 +58,7 @@ void	mapcheck(t_cub3d *img)
 void	mapcheck2(char *words, t_cub3d *img)
 {
 	int	fd;
-	int	i;
 
-	i = 0;
 	img->split = ft_split(words, ' ');
 	if (!strcmp(img->split[0], "NO") || !strcmp(img->split[0], "SO")
 		|| !strcmp(img->split[0], "WE") || !strcmp(img->split[0], "EA"))

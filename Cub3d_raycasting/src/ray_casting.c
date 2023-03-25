@@ -27,7 +27,6 @@ ettiğini ve temas ettiği ilk duvarın konumunu hesaplar.
 */
 void	raycasting(t_cub3d *img, double angle, int ray_counter)
 {
-	double	original_dist;
 	double	distance;
 
 	img->dirx = ((cos(angle * (PI / 180)) > 0) * 2) - 1;
@@ -48,7 +47,6 @@ void	raycasting(t_cub3d *img, double angle, int ray_counter)
 		img->_hith = true;
 		img->_hitv = false;
 	}
-	original_dist = distance;
 	distance *= fabs(cos(((img->angle * (180.0 / PI)) - angle) * (PI / 180)));
 	draw_ray(distance, img, ray_counter);
 }
